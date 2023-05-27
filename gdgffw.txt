@@ -1,0 +1,469 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+class showtimef1 implements Runnable
+{
+f1 frm1;
+int time;
+public showtimef1(f1 obj,int tm)
+{
+frm1=obj;
+time=tm;
+}
+
+public void run()
+{
+try
+{
+for(int i=(time*60);i>=0;i--)
+{
+frm1.setTitle("Time Remaining:"+i+" Seconds");
+Thread.sleep(1000);
+}
+}
+catch(Exception ex)
+{
+System.out.println(ex.getMessage());
+}
+// condition if time out and i!=15 
+if(frm1.i<15)
+{JOptionPane.showMessageDialog(null,"Sorry! Try Again stage f1");
+new f1N();
+frm1.dispose();}
+}
+}
+//---------------------------------------------------------------
+class showhint extends Thread
+{
+JLabel frm;
+public showhint(JLabel obj)
+{
+frm=obj;
+}
+
+public void run()
+{
+try
+{
+for(int i=0;i<10;i++)
+{
+frm.setVisible(!frm.isVisible());
+Thread.sleep(200);
+}
+frm.setVisible(true);
+}
+catch(Exception ex)
+{
+System.out.println(ex.getMessage());
+}
+
+}
+}
+
+//-------------------------------------------------------------------
+
+class f1 extends JFrame implements MouseListener
+{
+    JLabel label,label1,label2,label3,b1,b2,b3,label4,label5,label6,label7,label8,label9,label10,label11,label12,label13,label14,l,u,v,w,a,b,c,h1,h2,h3,b4,b5,b6,b7;
+    int i,x;
+    boolean dt;
+String r,s,q;
+showhint sh;
+
+    public f1() 
+  {     setSize(1279,767);
+        setVisible(true);
+	setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setResizable(false);
+	
+        JPanel panel = (JPanel)getContentPane(); 	
+	l=new JLabel();
+	u = new JLabel();
+v = new JLabel();
+w = new JLabel();
+	a = new JLabel();  
+        b= new JLabel(); 
+        c = new JLabel(); 
+	b1= new JLabel();  
+        b2= new JLabel(); 
+        b3 = new JLabel();
+	b4= new JLabel();  
+        b5= new JLabel(); 
+        b6 = new JLabel();
+	b7 = new JLabel();
+	h1 = new JLabel();  
+        h2= new JLabel(); 
+        h3 = new JLabel(); 
+	label = new JLabel();  
+        label1 = new JLabel(); 
+        label2 = new JLabel(); 
+	label3 = new JLabel(); 
+	label4 = new JLabel();  
+        label5 = new JLabel(); 
+        label6 = new JLabel(); 
+	label7 = new JLabel();
+        label8 = new JLabel();  
+        label9 = new JLabel(); 
+        label10 = new JLabel(); 
+	label11 = new JLabel(); 
+	label12 = new JLabel(); 
+	label13 = new JLabel();
+	label14 = new JLabel();
+        b1.setIcon(new ImageIcon("b1.png"));
+	    b4.setIcon(new ImageIcon("time.png"));
+    b5.setIcon(new ImageIcon("score.png"));
+    b6.setIcon(new ImageIcon("hint.png"));
+    b7.setIcon(new ImageIcon("menu.png"));
+        b2.setIcon(new ImageIcon("b2.png"));
+	b3.setIcon(new ImageIcon("b3.png"));
+        h1.setIcon(new ImageIcon("h1.png"));
+        h2.setIcon(new ImageIcon("h2.png"));
+	h3.setIcon(new ImageIcon("h3.png"));
+        a.setIcon(new ImageIcon("obj/watch.png"));
+        b.setIcon(new ImageIcon("obj/broom.png"));
+	c.setIcon(new ImageIcon("obj/butterfly.png"));
+	label.setIcon(new ImageIcon("obj/watch.png"));
+        label1.setIcon(new ImageIcon("obj/broom.png"));
+	label2.setIcon(new ImageIcon("obj/butterfly.png"));
+	label3.setIcon(new ImageIcon("obj/casette.png"));
+        label4.setIcon(new ImageIcon("obj/clarinet copy.png"));
+        label5.setIcon(new ImageIcon("obj/corkscrew.png"));
+	label6.setIcon(new ImageIcon("obj/crown.png"));
+	label7.setIcon(new ImageIcon("obj/diamond.png"));
+        label8.setIcon(new ImageIcon("obj/fork.png"));
+        label9.setIcon(new ImageIcon("obj/seahorse.png"));
+	label10.setIcon(new ImageIcon("obj/spring.png"));
+	label11.setIcon(new ImageIcon("obj/key.png"));
+	label12.setIcon(new ImageIcon("obj/beetle.png"));
+	label13.setIcon(new ImageIcon("obj/axe.png"));
+	label14.setIcon(new ImageIcon("obj/bucket.png"));
+        panel.setLayout(null);
+        panel.add(a);
+        panel.add(b); 
+	panel.add(c);
+	panel.add(label); label.addMouseListener(this);
+         panel.add(label1); label1.addMouseListener(this);
+	 panel.add(label2); label2.addMouseListener(this);
+	 panel.add(label3); 
+         panel.add(label4);
+         panel.add(label5); 
+	 panel.add(label6); 
+	 panel.add(label7);
+         panel.add(label8);
+         panel.add(label9);
+	 panel.add(label10);
+	 panel.add(label11); 
+	 panel.add(label12); 
+	 panel.add(label13); 
+	 panel.add(label14);
+	 panel.add(b1); 
+	 panel.add(b2); 
+	 panel.add(b3);
+/* panel.add(b4); 
+	 panel.add(b5); 
+	 panel.add(b6);
+ panel.add(b7); */
+	panel.add(h1); h1.addMouseListener(this);
+        panel.add(h2); h2.addMouseListener(this);
+	panel.add(h3); h3.addMouseListener(this);
+	   Dimension size = label.getPreferredSize();
+  h1.setBounds(1180, 600, size.width, size.height);
+	 h2.setBounds(1200, 600, size.width, size.height);	
+          h3.setBounds(1220, 600, size.width, size.height);
+          a.setBounds(400, 600, size.width, size.height);
+	  b.setBounds(500, 600, size.width, size.height);	
+          c.setBounds(600, 600, size.width, size.height);
+      	b1.setBounds(400, 600, size.width, size.height);
+	  b2.setBounds(500, 600, size.width, size.height);	
+          b3.setBounds(600, 600, size.width, size.height);
+	/*  	b4.setBounds(0, 0, size.width, size.height);
+	  b5.setBounds(1200, 0, size.width, size.height);	
+          b6.setBounds(0, 600, size.width, size.height);
+   b7.setBounds(1200, 600, size.width, size.height);*/
+	   label.setBounds(100, 100,size.width, size.height );
+	  label1.setBounds(1080, 450, size.width, size.height);	
+          label2.setBounds(300, 300, size.width, size.height);
+	  label3.setBounds(1150, 300, size.width, size.height);
+	  label4.setBounds(1140, 600, size.width, size.height);
+	  label5.setBounds(250, 100, size.width, size.height);	
+          label6.setBounds(750, 580, size.width, size.height);
+	  label7.setBounds(390, 450, size.width, size.height);
+	  label8.setBounds(100, 400, size.width, size.height);
+	  label9.setBounds(900, 300, size.width+80, size.height+80);          
+          label10.setBounds(590, 380, size.width, size.height);
+	  label11.setBounds(540, 250, size.width+40, size.height+40);
+	  label12.setBounds(460, 300, size.width, size.height);
+	  label13.setBounds(460, 300, size.width, size.height);
+	  label14.setBounds(400, 350, size.width, size.height);
+        
+     setLayout(new BorderLayout());
+        JLabel background=new JLabel(new ImageIcon("1.png"));
+        add(background);
+	pack(); 
+	showtimef1 t=new showtimef1(this,3);
+	Thread th=new Thread(t);
+	th.start();
+	i=0;
+
+r="label";
+ s="label1";
+ q="label2";
+	
+	
+  }
+public void mouseEntered(MouseEvent ae){}
+public void mouseExited(MouseEvent ae){}
+public void mousePressed(MouseEvent ae){}
+public void mouseReleased(MouseEvent ae){}
+public void mouseClicked(MouseEvent ae)
+{ 
+if(ae.getSource()==label)
+{i++;label3.addMouseListener(this);
+label.setVisible(false);check(this);
+ a.setIcon(new ImageIcon("obj/casette.png"));
+ r="label3";} 	
+else if(ae.getSource()==label1)
+{i++;label4.addMouseListener(this);
+label1.setVisible(false);check(this);
+ b.setIcon(new ImageIcon("obj/clarinet copy.png"));
+ s="label4";}
+  	
+else if(ae.getSource()==label2)
+{i++;label5.addMouseListener(this);
+label2.setVisible(false);check(this);
+ c.setIcon(new ImageIcon("obj/corkscrew.png"));
+ q="label5";}
+
+else if(ae.getSource()==label3)
+{i++;label6.addMouseListener(this);
+label3.setVisible(false);check(this);
+ a.setIcon(new ImageIcon("obj/crown.png"));
+ r="label6";}
+else if(ae.getSource()==label4)
+{i++; label7.addMouseListener(this);
+label4.setVisible(false);check(this);
+ b.setIcon(new ImageIcon("obj/diamond.png"));
+ s="label7";}
+  	
+else if(ae.getSource()==label5)
+{i++; label8.addMouseListener(this);
+label5.setVisible(false);check(this);
+c.setIcon(new ImageIcon("obj/fork.png"));
+ q="label8";}
+  	
+else if(ae.getSource()==label6)
+{i++;label9.addMouseListener(this);
+label6.setVisible(false);check(this);
+a.setIcon(new ImageIcon("obj/seahorse.png"));
+r="label9"; 
+}
+ 	
+else if(ae.getSource()==label7)
+{i++;label10.addMouseListener(this);
+label7.setVisible(false);check(this);
+b.setIcon(new ImageIcon("obj/spring.png"));
+ s="label10";}
+  	
+else if(ae.getSource()==label8)
+{i++;label11.addMouseListener(this);
+label8.setVisible(false);check(this);
+ c.setIcon(new ImageIcon("obj/key.png"));
+ q="label11";}
+  	
+else if(ae.getSource()==label9)
+{i++;label12.addMouseListener(this);
+label9.setVisible(false);check(this);
+ a.setIcon(new ImageIcon("obj/beetle.png"));
+r="label12";}
+  	
+else if(ae.getSource()==label10)
+{i++;label13.addMouseListener(this);
+label10.setVisible(false);check(this);
+ b.setIcon(new ImageIcon("obj/axe.png"));
+ s="label13";}
+  	
+else if(ae.getSource()==label11)
+{i++;label14.addMouseListener(this);
+label11.setVisible(false);check(this);
+ c.setIcon(new ImageIcon("obj/bucket.png")); q="label4";}
+
+else if(ae.getSource()==label12)
+{i++;
+label12.setVisible(false);check(this);
+a.setVisible(false);
+b1.setVisible(false);check(this);
+}
+
+else if(ae.getSource()==label13)
+{i++;
+label13.setVisible(false);
+b.setVisible(false);
+b2.setVisible(false);check(this);
+}
+
+else if(ae.getSource()==label14)
+{i++;
+label14.setVisible(false);
+c.setVisible(false);
+b3.setVisible(false);
+check(this);
+} 
+
+else if(ae.getSource()==h1)
+{
+	if(b1.isVisible()==true)
+	{if(r=="label")
+	u=label;
+	else if (r=="label3")
+	u=label3;
+	else if (r=="label6")
+	u=label6;
+	else if (r=="label9")
+	u=label9;
+	else if (r=="label12")
+	u=label12;
+	sh=new showhint(u);
+	sh.start();
+	x--;}
+	else if(b1.isVisible()==false && b2.isVisible()==true)
+	{ if(s=="label1")
+	v=label1;
+	else if (s=="label4")
+	v=label4;
+	else if (s=="label7")
+	v=label7;
+	else if (s=="label10")
+	v=label10;
+	else if (s=="label13")
+	v=label13;
+	sh=new showhint(v);
+	sh.start();
+	x--;}
+	else if(b2.isVisible()==false) //&& b2.isVisible()=false)
+	{ if(q=="label2")
+	w=label2;
+	else if (q=="label5")
+	w=label5;
+	else if (q=="label8")
+	w=label8;
+	else if (q=="label11")
+	w=label11;
+	else if (q=="label14")
+	w=label14;
+	sh=new showhint(w);
+	x--;
+	sh.start();}
+
+h1.setVisible(false);}	 
+
+else if(ae.getSource()==h2)
+{
+	if(b1.isVisible()==true)
+	{if(r=="label")
+	u=label;
+	else if (r=="label3")
+	u=label3;
+	else if (r=="label6")
+	u=label6;
+	else if (r=="label9")
+	u=label9;
+	else if (r=="label12")
+	u=label12;
+	sh=new showhint(u);
+	sh.start();
+	x--;}
+	else if(b1.isVisible()==false && b2.isVisible()==true)
+	{ if(s=="label1")
+	v=label1;
+	else if (s=="label4")
+	v=label4;
+	else if (s=="label7")
+	v=label7;
+	else if (s=="label10")
+	v=label10;
+	else if (s=="label13")
+	v=label13;
+	sh=new showhint(v);
+	sh.start();
+	x--;}
+	else if(b2.isVisible()==false) //&& b2.isVisible()=false)
+	{ if(q=="label2")
+	w=label2;
+	else if (q=="label5")
+	w=label5;
+	else if (q=="label8")
+	w=label8;
+	else if (q=="label11")
+	w=label11;
+	else if (q=="label14")
+	w=label14;
+	sh=new showhint(w);
+	x--;
+	sh.start();}
+
+h2.setVisible(false);}	
+
+else if(ae.getSource()==h3)
+{
+	if(b1.isVisible()==true)
+	{if(r=="label")
+	u=label;
+	else if (r=="label3")
+	u=label3;
+	else if (r=="label6")
+	u=label6;
+	else if (r=="label9")
+	u=label9;
+	else if (r=="label12")
+	u=label12;
+	sh=new showhint(u);
+	sh.start();
+	x--;}
+	else if(b1.isVisible()==false && b2.isVisible()==true)
+	{ if(s=="label1")
+	v=label1;
+	else if (s=="label4")
+	v=label4;
+	else if (s=="label7")
+	v=label7;
+	else if (s=="label10")
+	v=label10;
+	else if (s=="label13")
+	v=label13;
+	sh=new showhint(v);
+	sh.start();
+	x--;}
+	else if(b2.isVisible()==false) //&& b2.isVisible()=false)
+	{ if(q=="label2")
+	w=label2;
+	else if (q=="label5")
+	w=label5;
+	else if (q=="label8")
+	w=label8;
+	else if (q=="label11")
+	w=label11;
+	else if (q=="label14")
+	w=label14;
+	sh=new showhint(w);
+	x--;
+	sh.start();}
+
+h3.setVisible(false);}	
+}
+    public static void main(String args[]) 
+    {
+	f1 bgf1=new f1();
+check(bgf1);
+     int t;  
+
+}
+public static void check(f1 bgf1)
+{
+if(bgf1.i==15)
+{
+JOptionPane.showMessageDialog(null,"Congratulations!!! You Have Cleared Stage Successfully. Moving To Next Stage");
+JOptionPane.showMessageDialog(null,"Score:"+bgf1.i);
+new f2();
+bgf1.dispose();
+}}}

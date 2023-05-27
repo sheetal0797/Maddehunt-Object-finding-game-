@@ -1,0 +1,11 @@
+// to make non-sizable frame
+import java.awt.Frame;
+
+public class Main {
+  public static void main() {
+    Frame frame = new Frame();
+    frame.setResizable(false);
+
+    boolean resizable = frame.isResizable();
+  }
+}
